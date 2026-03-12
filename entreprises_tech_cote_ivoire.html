@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entreprises Tech — Côte d'Ivoire</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F97316;
+    --green: #16A34A;
+    --ink: #0F1111;
+    --paper: #FAFAF7;
+    --rule: #D4D0C8;
+    --tag-bg: #1C1C1A;
+    --tag-text: #E8E4DA;
+    --accent: #F97316;
+    --muted: #7A7970;
+    --cell-alt: #F3F0E8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Mono', monospace;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 4rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: 'CI';
+    position: absolute;
+    right: 3rem; top: -1rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 14rem;
+    font-weight: 800;
+    opacity: .06;
+    line-height: 1;
+    color: var(--orange);
+    pointer-events: none;
+  }
+  .flag-stripe {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.5rem;
+  }
+  .flag-stripe span {
+    display: inline-block;
+    height: 4px;
+    width: 36px;
+    border-radius: 2px;
+  }
+  .flag-stripe .s1 { background: #F77F00; }
+  .flag-stripe .s2 { background: #FFFFFF; }
+  .flag-stripe .s3 { background: #009A44; }
+
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: .5rem;
+  }
+  header h1 span { color: var(--orange); }
+  header p {
+    font-size: .78rem;
+    color: #9A9890;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #2A2A28;
+  }
+  .stat { display: flex; flex-direction: column; gap: .2rem; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--orange);
+  }
+  .stat-label { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: #6A6860; }
+
+  /* ─── LEGEND ─── */
+  .legend {
+    padding: 1rem 4rem;
+    background: var(--tag-bg);
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 2rem;
+    align-items: center;
+  }
+  .legend-title {
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #6A6860;
+    margin-right: .5rem;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .65rem;
+    padding: .2rem .6rem;
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+
+  .m5 { background: #14532D; color: #86EFAC; }
+  .m4 { background: #166534; color: #BBF7D0; }
+  .m3 { background: #1E3A5F; color: #93C5FD; }
+  .m2 { background: #78350F; color: #FDE68A; }
+  .m1 { background: #4C1D95; color: #DDD6FE; }
+  .dot5 { background: #4ADE80; }
+  .dot4 { background: #86EFAC; }
+  .dot3 { background: #60A5FA; }
+  .dot2 { background: #FCD34D; }
+  .dot1 { background: #C4B5FD; }
+
+  /* ─── FILTER BAR ─── */
+  .filter-bar {
+    padding: 1rem 4rem;
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--rule);
+    background: #F7F4EC;
+  }
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: .35rem .9rem;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    transition: all .15s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* ─── TABLE ─── */
+  .table-wrap {
+    overflow-x: auto;
+    padding: 2rem 4rem 4rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .75rem;
+    table-layout: fixed;
+  }
+
+  colgroup col:nth-child(1) { width: 3.5%; }
+  colgroup col:nth-child(2) { width: 13%; }
+  colgroup col:nth-child(3) { width: 11%; }
+  colgroup col:nth-child(4) { width: 20%; }
+  colgroup col:nth-child(5) { width: 19%; }
+  colgroup col:nth-child(6) { width: 10%; }
+  colgroup col:nth-child(7) { width: 11.5%; }
+  colgroup col:nth-child(8) { width: 12%; }
+
+  thead th {
+    font-family: 'Syne', sans-serif;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: .7rem 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--ink);
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--rule);
+    transition: background .1s;
+    cursor: default;
+  }
+  tbody tr:hover { background: #EEEBE0; }
+  tbody tr:nth-child(even) td { background: rgba(0,0,0,.018); }
+
+  td {
+    padding: .75rem 1rem;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .td-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--muted);
+    font-size: .7rem;
+  }
+
+  .company-name {
+    font-family: 'Syne', sans-serif;
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+    margin-bottom: .15rem;
+  }
+  .company-type {
+    font-size: .62rem;
+    color: var(--muted);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .pub-tag {
+    display: inline-block;
+    margin-top: .2rem;
+    font-size: .58rem;
+    padding: .1rem .4rem;
+    background: #0A2E1A;
+    color: #86EFAC;
+    border-radius: 2px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .sector-tag {
+    display: inline-block;
+    font-size: .63rem;
+    padding: .2rem .55rem;
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: .03em;
+    white-space: normal;
+    word-break: break-word;
+  }
+  .s-fintech  { background: #FFF3E0; color: #B45309; border: 1px solid #FDE68A; }
+  .s-telecom  { background: #E0F2FE; color: #0369A1; border: 1px solid #BAE6FD; }
+  .s-ecom     { background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0; }
+  .s-agri     { background: #F7FEE7; color: #4D7C0F; border: 1px solid #D9F99D; }
+  .s-edtech   { background: #FDF4FF; color: #7E22CE; border: 1px solid #E9D5FF; }
+  .s-logistique { background: #FFF7ED; color: #C2410C; border: 1px solid #FED7AA; }
+  .s-saas     { background: #F0F9FF; color: #0369A1; border: 1px solid #BAE6FD; }
+  .s-public   { background: #F0FDF4; color: #166534; border: 1px solid #86EFAC; }
+  .s-cleantech { background: #F0FFF4; color: #065F46; border: 1px solid #6EE7B7; }
+  .s-legal    { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; }
+  .s-media    { background: #FFF1F2; color: #9F1239; border: 1px solid #FECDD3; }
+  .s-infra    { background: #F8FAFC; color: #334155; border: 1px solid #CBD5E1; }
+  .s-sante    { background: #FFF0F6; color: #9D174D; border: 1px solid #FBCFE8; }
+  .s-immo     { background: #FFFBEB; color: #92400E; border: 1px solid #FDE68A; }
+
+  .maturite {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+  }
+  .maturite-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .mat-text { font-size: .68rem; }
+
+  .dot-m5 { background: #4ADE80; box-shadow: 0 0 6px #4ADE8088; }
+  .dot-m4 { background: #A3E635; }
+  .dot-m3 { background: #60A5FA; }
+  .dot-m2 { background: #FBBF24; }
+  .dot-m1 { background: #C084FC; }
+
+  /* section headers */
+  .section-row td {
+    background: var(--ink) !important;
+    color: var(--paper);
+    font-family: 'Syne', sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+    border: none !important;
+  }
+  .section-row:hover { background: var(--ink) !important; }
+
+  .marche { font-size: .7rem; color: #3A3830; line-height: 1.4; }
+  .mission { font-size: .7rem; color: #3A3830; line-height: 1.4; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    color: #5A5850;
+    padding: 1.5rem 4rem;
+    font-size: .65rem;
+    letter-spacing: .06em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer strong { color: #9A9890; }
+
+  /* ─── RESPONSIVE ─── */
+
+  /* Tablet */
+  @media (max-width: 1200px) {
+    header, .legend, .filter-bar, .table-wrap, footer {
+      padding-left: 2rem; padding-right: 2rem;
+    }
+    table { font-size: .7rem; }
+    td { padding: .6rem .5rem; }
+    thead th { padding: .6rem .5rem; font-size: .6rem; }
+    .company-name { font-size: .76rem; }
+    .mission, .marche { font-size: .65rem; }
+  }
+
+  /* Small tablet / large phone */
+  @media (max-width: 900px) {
+    header, .legend, .filter-bar, .table-wrap, footer {
+      padding-left: 1.5rem; padding-right: 1.5rem;
+    }
+    header::before { display: none; }
+    header h1 { font-size: 1.8rem; }
+    .stats-bar { gap: 1.5rem; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: .5rem; text-align: center; }
+
+    /* Switch table to card layout */
+    table { table-layout: auto; }
+    colgroup { display: none; }
+    thead { display: none; }
+    tbody tr {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: auto auto auto;
+      gap: .25rem .75rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    tbody tr td { padding: .2rem 0; border: none; background: none !important; }
+
+    /* # column */
+    tbody tr td:nth-child(1) { grid-column: 1; grid-row: 1; }
+    /* Nom */
+    tbody tr td:nth-child(2) { grid-column: 2; grid-row: 1; }
+    /* Secteur */
+    tbody tr td:nth-child(3) { grid-column: 3; grid-row: 1; align-self: center; }
+    /* Missions */
+    tbody tr td:nth-child(4) { grid-column: 1 / -1; grid-row: 2; }
+    /* Part de marché */
+    tbody tr td:nth-child(5) { grid-column: 1 / -1; grid-row: 3; }
+    /* Statut */
+    tbody tr td:nth-child(6) { grid-column: 1; grid-row: 4; }
+    /* Maturité */
+    tbody tr td:nth-child(7) { grid-column: 2; grid-row: 4; }
+    /* Application web */
+    tbody tr td:nth-child(8) { grid-column: 3; grid-row: 4; text-align: right; }
+
+    /* Section headers stay full width */
+    .section-row { display: block !important; }
+    .section-row td { display: block; padding: .5rem 0 !important; }
+
+    /* Labels before Missions / Marché on card layout */
+    tbody tr td:nth-child(4)::before {
+      content: 'Missions : ';
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .6rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    tbody tr td:nth-child(5)::before {
+      content: 'Marché : ';
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .6rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+  }
+
+  /* Phone */
+  @media (max-width: 560px) {
+    header, .legend, .filter-bar, .table-wrap, footer {
+      padding-left: 1rem; padding-right: 1rem;
+    }
+    header { padding-top: 2rem; padding-bottom: 1.5rem; }
+    header h1 { font-size: 1.5rem; }
+    header p { font-size: .68rem; }
+    .stats-bar { gap: 1rem; }
+    .stat-num { font-size: 1.3rem; }
+    .legend { gap: .4rem 1rem; padding: .8rem 1rem; }
+
+    tbody tr {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      padding: .8rem 0;
+    }
+    tbody tr td { padding: .1rem 0; }
+    /* Reset grid positioning — stack everything */
+    tbody tr td:nth-child(1) { order: -1; }
+    tbody tr td:nth-child(3) { order: 0; }
+    tbody tr td:nth-child(8) { text-align: left; }
+
+    .mission, .marche { font-size: .68rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="flag-stripe">
+    <span class="s1"></span><span style="width:4px;display:inline-block"></span>
+    <span class="s2"></span><span style="width:4px;display:inline-block"></span>
+    <span class="s3"></span>
+  </div>
+  <h1>Entreprises Tech<br><span>Côte d'Ivoire</span></h1>
+  <p>Cartographie des acteurs du numérique — Applications web actives · 2025</p>
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">47</span><span class="stat-label">Entreprises recensées</span></div>
+    <div class="stat"><span class="stat-num">13</span><span class="stat-label">Secteurs couverts</span></div>
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Entités publiques</span></div>
+    <div class="stat"><span class="stat-num">$350M</span><span class="stat-label">Levées 2024 (éco. CI)</span></div>
+  </div>
+</header>
+
+<div class="legend">
+  <span class="legend-title">Maturité :</span>
+  <span class="badge m5"><span class="badge-dot dot5"></span>Très mature</span>
+  <span class="badge m4"><span class="badge-dot dot4"></span>Mature</span>
+  <span class="badge m3"><span class="badge-dot dot3"></span>Scale-up</span>
+  <span class="badge m2"><span class="badge-dot dot2"></span>Startup en croissance</span>
+  <span class="badge m1"><span class="badge-dot dot1"></span>Early stage</span>
+</div>
+
+<div class="table-wrap">
+<table>
+  <colgroup>
+    <col><col><col><col><col><col><col><col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nom</th>
+      <th>Secteur</th>
+      <th>Missions</th>
+      <th>Part de marché / Indicateurs clés</th>
+      <th>Statut</th>
+      <th>Maturité</th>
+      <th>Application web</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- ══ TÉLÉCOMMUNICATIONS ══ -->
+    <tr class="section-row"><td colspan="8">📡 Télécommunications & Infrastructure</td></tr>
+
+    <tr>
+      <td class="td-num">01</td>
+      <td><span class="company-name">Orange CI</span><span class="company-type">Groupe multinational</span></td>
+      <td><span class="sector-tag s-telecom">Télécom</span></td>
+      <td class="mission">Réseau mobile, internet fixe & mobile, Orange Money, contenus numériques, solutions B2B (Orange Business)</td>
+      <td class="marche">52,3 % des abonnés mobile · 59,4 % Mobile Money · ~50 % du CA mobile · Leader absolu</td>
+      <td><span class="company-type">Privé coté</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m5"></span><span class="mat-text">Très mature</span></span></td>
+      <td>orange.ci / Max It App</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">02</td>
+      <td><span class="company-name">MTN CI</span><span class="company-type">Groupe multinational</span></td>
+      <td><span class="sector-tag s-telecom">Télécom</span></td>
+      <td class="mission">Réseau mobile, internet 4G/5G, MTN Mobile Money, solutions entreprises</td>
+      <td class="marche">~34 % abonnés mobile · ~40 % data mobile (coude-à-coude avec Orange) · 2ème opérateur</td>
+      <td><span class="company-type">Privé coté</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m5"></span><span class="mat-text">Très mature</span></span></td>
+      <td>mtn.ci / MoMo App</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">03</td>
+      <td><span class="company-name">Moov Africa CI</span><span class="company-type">Groupe Maroc Telecom</span></td>
+      <td><span class="sector-tag s-telecom">Télécom</span></td>
+      <td class="mission">Réseau mobile, internet mobile, Moov Money, services numériques</td>
+      <td class="marche">~18 % abonnés mobile · 3ème opérateur · couverture 4G 62,95 %</td>
+      <td><span class="company-type">Privé</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m5"></span><span class="mat-text">Très mature</span></span></td>
+      <td>moov-africa.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">04</td>
+      <td><span class="company-name">Awalé CI</span><span class="company-type">Opérateur backbone</span></td>
+      <td><span class="sector-tag s-infra">Infra / Fibre</span></td>
+      <td class="mission">Déploiement fibre optique backbone, connectivité entreprises, transit IP</td>
+      <td class="marche">9 % du réseau fibre nationale (24 764 km total) · Acteur infra stratégique</td>
+      <td><span class="company-type">Privé</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>awale.ci</td>
+    </tr>
+
+    <!-- ══ FINTECH ══ -->
+    <tr class="section-row"><td colspan="8">💳 Fintech & Services Financiers Numériques</td></tr>
+
+    <tr>
+      <td class="td-num">05</td>
+      <td><span class="company-name">Wave CI</span><span class="company-type">Licorne américano-africaine</span></td>
+      <td><span class="sector-tag s-fintech">Fintech</span></td>
+      <td class="mission">Transferts d'argent mobile à 1 %, dépôts/retraits gratuits, paiements marchands, inclusion financière</td>
+      <td class="marche">&gt; 10 M utilisateurs actifs dans 6 pays · Modèle disruptif ayant forcé une baisse des tarifs sectoriels · Licorne ($1,7 Md)</td>
+      <td><span class="company-type">Privé US/CI</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m5"></span><span class="mat-text">Très mature</span></span></td>
+      <td>wave.com/ci + app</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">06</td>
+      <td><span class="company-name">Djamo</span><span class="company-type">Néobanque — Fondée 2020</span></td>
+      <td><span class="sector-tag s-fintech">Fintech</span></td>
+      <td class="mission">Comptes bancaires sans frais, carte Visa (co-brandée BGFIBank), épargne automatique, transferts cross-border, virements salaires</td>
+      <td class="marche">750 000 comptes · 2 M+ téléchargements · $14 M levés (YC, Partech, Enza Capital) · 1er distributeur de cartes bancaires CI</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m3"></span><span class="mat-text">Scale-up</span></span></td>
+      <td>djamo.com + app</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">07</td>
+      <td><span class="company-name">CinetPay</span><span class="company-type">Fondée 2016</span></td>
+      <td><span class="sector-tag s-fintech">Fintech / Paiement</span></td>
+      <td class="mission">Agrégateur de paiements (mobile money + cartes bancaires) pour e-commerce, facturation en ligne, API marchands</td>
+      <td class="marche">Leader passerelle paiement CI · Actif dans 10 pays africains · Référence de l'écosystème e-commerce francophone</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>cinetpay.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">08</td>
+      <td><span class="company-name">Julaya</span><span class="company-type">Fondée 2018</span></td>
+      <td><span class="sector-tag s-fintech">Fintech B2B</span></td>
+      <td class="mission">Paiements B2B via mobile money, virements fournisseurs/employés, Cash & Collect, API paiement pour entreprises</td>
+      <td class="marche">~1,84 M€ de transactions/mois · Clients : Banque Mondiale, Ministère Éducation CI, Jumia · $2 M levés · Présente CI, Sénégal, Bénin</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m3"></span><span class="mat-text">Scale-up</span></span></td>
+      <td>julaya.co</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">09</td>
+      <td><span class="company-name">HUB2</span><span class="company-type">Fondée ~2019</span></td>
+      <td><span class="sector-tag s-fintech">Fintech / Infra paiement</span></td>
+      <td class="mission">Infrastructure de paiement digital ("Stripe de l'Afrique francophone"), liens de paiement, API carte & mobile money, cash-out</td>
+      <td class="marche">Émergent mais fort potentiel · Vise le marché B2B/développeurs · Infrastructure sous-jacente de plusieurs fintechs régionales</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>hub2.io</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">10</td>
+      <td><span class="company-name">APAYM</span><span class="company-type">Fondée ~2018</span></td>
+      <td><span class="sector-tag s-fintech">Fintech / Super App</span></td>
+      <td class="mission">Super app financière locale : transferts, cartes prépayées, paiements QR, liens de paiement, recharges</td>
+      <td class="marche">Actif en Côte d'Ivoire et en expansion dans l'espace UEMOA · Niche sur les populations non-bancarisées</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>apaym.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">11</td>
+      <td><span class="company-name">SudPay</span><span class="company-type">Fondée ~2017</span></td>
+      <td><span class="sector-tag s-fintech">Fintech / Paiement</span></td>
+      <td class="mission">Dématérialisation des paiements : e-taxation, ticketing digital, mPOS, recouvrement pour administrations et entreprises</td>
+      <td class="marche">Présent dans plusieurs pays Afrique de l'Ouest · Spécialiste paiements institutionnels et collectivités</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>sudpay.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">12</td>
+      <td><span class="company-name">Push CI</span><span class="company-type">Fondée 2019</span></td>
+      <td><span class="sector-tag s-fintech">Fintech</span></td>
+      <td class="mission">Paiements mobiles pour populations rurales et informelles, éducation financière, inclusion en zones reculées</td>
+      <td class="marche">Niche rurale et informelle · Partenariats opérateurs locaux · Profil émergent</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>pushci.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">13</td>
+      <td><span class="company-name">PANELYS Cash</span><span class="company-type">Startup</span></td>
+      <td><span class="sector-tag s-fintech">Fintech</span></td>
+      <td class="mission">Transferts solidaires, carte bancaire Visa, services bancaires SMS/web/mobile pour jeunes, femmes, acteurs informels</td>
+      <td class="marche">Marché de niche — segment solidaire et inclusif · Faible couverture nationale</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>panelyscash.com</td>
+    </tr>
+
+    <!-- ══ E-COMMERCE & MARKETPLACES ══ -->
+    <tr class="section-row"><td colspan="8">🛒 E-Commerce, Marketplaces & Livraison</td></tr>
+
+    <tr>
+      <td class="td-num">14</td>
+      <td><span class="company-name">Jumia CI</span><span class="company-type">Groupe panafricain coté NYSE</span></td>
+      <td><span class="sector-tag s-ecom">E-Commerce</span></td>
+      <td class="mission">Marketplace généraliste, logistique (181 pick-up stations / 107 villes), JumiaPay, Jumia Ads, livraison J+1 à Abidjan</td>
+      <td class="marche">Leader e-commerce CI · Hub francophone du groupe (25 % du GMV global) · Recapitalisé 20 Md FCFA en 2024 · &gt;90 % satisfaction client</td>
+      <td><span class="company-type">Privé international</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m5"></span><span class="mat-text">Très mature</span></span></td>
+      <td>jumia.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">15</td>
+      <td><span class="company-name">ANKA (ex-Afrikrea)</span><span class="company-type">Fondée 2016</span></td>
+      <td><span class="sector-tag s-ecom">E-Commerce / Artisanat</span></td>
+      <td class="mission">Plateforme e-commerce pour artisans africains (mode, art, artisanat), outils de vente en ligne, connexion diasporas mondiales</td>
+      <td class="marche">Leader "Made in Africa" en ligne · $5 M levés · Plusieurs milliers de vendeurs actifs · Présence internationale</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m3"></span><span class="mat-text">Scale-up</span></span></td>
+      <td>anka.africa</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">16</td>
+      <td><span class="company-name">Afrimalin</span><span class="company-type">Plateforme d'annonces</span></td>
+      <td><span class="sector-tag s-immo">Petites annonces</span></td>
+      <td class="mission">Plateforme d'annonces classées : immobilier, véhicules, emplois, électronique, services — en Afrique francophone</td>
+      <td class="marche">Référence annonces CI et Afrique francophone · Trafic organique élevé · Modèle basé sur la publicité et les annonces premium</td>
+      <td><span class="company-type">Privé régional</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>afrimalin.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">17</td>
+      <td><span class="company-name">Yango CI</span><span class="company-type">Groupe international (Russie)</span></td>
+      <td><span class="sector-tag s-logistique">Super App / VTC</span></td>
+      <td class="mission">VTC, livraison de repas (depuis 2025), marketplace Achat & Vente, siège régional africain à Abidjan depuis juillet 2025</td>
+      <td class="marche">Croissance rapide · Hub panafricain basé à Abidjan · ~200 employés CI · Concurrent direct de Glovo et Heetch</td>
+      <td><span class="company-type">Privé international</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m3"></span><span class="mat-text">Scale-up</span></span></td>
+      <td>yango.com/ci + app</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">18</td>
+      <td><span class="company-name">Glovo CI</span><span class="company-type">Groupe espagnol</span></td>
+      <td><span class="sector-tag s-logistique">Livraison / Courses</span></td>
+      <td class="mission">Livraison rapide de repas, courses, médicaments, colis express à Abidjan</td>
+      <td class="marche">2ème marché Glovo en Afrique (après le Maroc) · ~15 % du CA africain Glovo · Forte présence à Abidjan</td>
+      <td><span class="company-type">Privé international</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>glovoapp.com</td>
+    </tr>
+
+    <!-- ══ AGRITECH ══ -->
+    <tr class="section-row"><td colspan="8">🌾 AgriTech & InsurTech Agricole</td></tr>
+
+    <tr>
+      <td class="td-num">19</td>
+      <td><span class="company-name">Seekewa</span><span class="company-type">Fondée 2018</span></td>
+      <td><span class="sector-tag s-agri">AgriTech</span></td>
+      <td class="mission">Services financiers (microcrédits, épargne), données marché, connexion agriculteurs-marchés, outils numériques pour petits exploitants</td>
+      <td class="marche">+1 000 agriculteurs soutenus · +20 % rendements · +30 % revenus · Expansion prévue Afrique de l'Ouest francophone</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>seekewa.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">20</td>
+      <td><span class="company-name">ICT4DEV</span><span class="company-type">Fondée ~2013</span></td>
+      <td><span class="sector-tag s-agri">AgriTech / Impact</span></td>
+      <td class="mission">Solutions numériques et technologiques pour le monde agricole africain, renforcement de capacités, transformation communautés rurales</td>
+      <td class="marche">22 distinctions en entrepreneuriat web · Portée régionale · Acteur reconnu de l'impact social tech</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>ict4dev.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">21</td>
+      <td><span class="company-name">WeFly Agri</span><span class="company-type">Startup</span></td>
+      <td><span class="sector-tag s-agri">AgriTech / Drone</span></td>
+      <td class="mission">Agriculture de précision par drones : épandage, cartographie, surveillance des cultures, conseil agro-numérique</td>
+      <td class="marche">Niche agri-drone CI · Partenariats avec coopératives cacao/café · Profil émergent</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>weflyagri.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">22</td>
+      <td><span class="company-name">Oko Finance CI</span><span class="company-type">Opère en CI, Mali, Ouganda</span></td>
+      <td><span class="sector-tag s-agri">InsurTech / AgriTech</span></td>
+      <td class="mission">Assurance agricole paramétrique via données satellitaires, paiements échelonnés, indemnisation automatisée contre les aléas climatiques</td>
+      <td class="marche">Partenariat Allianz & Touton pour producteurs de cacao CI · Cible agriculteurs à &lt;$0,78/jour · Expansion 2025</td>
+      <td><span class="company-type">Startup internationale (Mali/CI)</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>oko.finance</td>
+    </tr>
+
+    <!-- ══ EDTECH ══ -->
+    <tr class="section-row"><td colspan="8">🎓 EdTech & Formation Numérique</td></tr>
+
+    <tr>
+      <td class="td-num">23</td>
+      <td><span class="company-name">Etudesk</span><span class="company-type">Fondée ~2018</span></td>
+      <td><span class="sector-tag s-edtech">EdTech / LMS</span></td>
+      <td class="mission">LMS (Learning Management System) pour entreprises et institutions académiques : digitalisation des formations, accès élargi à l'éducation</td>
+      <td class="marche">500+ organisations accompagnées en 3 ans · Présence sous-régionale · Référence LMS Afrique francophone</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m3"></span><span class="mat-text">Scale-up</span></span></td>
+      <td>etudesk.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">24</td>
+      <td><span class="company-name">Wootlab</span><span class="company-type">Startup</span></td>
+      <td><span class="sector-tag s-edtech">EdTech / Talent</span></td>
+      <td class="mission">Mise en relation freelances & entreprises, externalisation équipes dev, développement de compétences, packages PME tech</td>
+      <td class="marche">Actif en Afrique subsaharienne · Niche freelance tech · Profil émergent</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>wootlab.io</td>
+    </tr>
+
+    <!-- ══ CLEANTECH ══ -->
+    <tr class="section-row"><td colspan="8">♻️ CleanTech & GreenTech</td></tr>
+
+    <tr>
+      <td class="td-num">25</td>
+      <td><span class="company-name">Coliba</span><span class="company-type">Fondée ~2019</span></td>
+      <td><span class="sector-tag s-cleantech">CleanTech</span></td>
+      <td class="mission">Plateforme de gestion des déchets connectant ménages/entreprises et recycleurs, formalisation emplois collecte, économie circulaire</td>
+      <td class="marche">&gt;10 000 tonnes déchets traitées · &gt;50 000 ménages et entreprises connectés · $500 K levés (Miarakap) · Leader CleanTech CI</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>coliba.ci + app</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">26</td>
+      <td><span class="company-name">Africharger</span><span class="company-type">Startup</span></td>
+      <td><span class="sector-tag s-cleantech">GreenTech / Mobilité</span></td>
+      <td class="mission">Infrastructure de recharge pour véhicules électriques, solutions domicile/bureau/extérieur, transition énergétique propre en Afrique</td>
+      <td class="marche">Niche EV émergente · Partenariats avec entreprises et institutionnels · Marché en développement</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>africharger.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">27</td>
+      <td><span class="company-name">Lifi-LED CI</span><span class="company-type">Startup</span></td>
+      <td><span class="sector-tag s-cleantech">SmartCity / GreenTech</span></td>
+      <td class="mission">Éclairage intelligent LED, Wi-Fi public via technologie LiFi, IoT urbain, sécurité des espaces publics, pilotes dans les villes ivoiriennes</td>
+      <td class="marche">Projets pilotes en cours dans plusieurs villes CI · Partenariats avec autorités publiques · Réduction coûts opérationnels démontrée</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>lifiled.ci</td>
+    </tr>
+
+    <!-- ══ LEGALTECH & SAAS ══ -->
+    <tr class="section-row"><td colspan="8">⚖️ LegalTech, SaaS & Outils Métiers</td></tr>
+
+    <tr>
+      <td class="td-num">28</td>
+      <td><span class="company-name">Legafrik</span><span class="company-type">Fondée ~2018</span></td>
+      <td><span class="sector-tag s-legal">LegalTech</span></td>
+      <td class="mission">Services juridiques et comptables dématérialisés pour entrepreneurs OHADA : création d'entreprises, conformité, actes juridiques en ligne</td>
+      <td class="marche">Leader LegalTech espace OHADA (17 pays) · Milliers d'entreprises créées · Expansion sous-régionale active</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m3"></span><span class="mat-text">Scale-up</span></span></td>
+      <td>legafrik.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">29</td>
+      <td><span class="company-name">Innoving / N'Zassa</span><span class="company-type">Fondée ~2017</span></td>
+      <td><span class="sector-tag s-saas">SaaS / ERP</span></td>
+      <td class="mission">Logiciel de gestion 360° pour commerces et PME africains : caisse, stock, facturation, RH, adapté à l'environnement des affaires en Afrique</td>
+      <td class="marche">Adopté par des centaines de PME CI · Niche gestion locale · Modèle SaaS B2B croissant</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>innoving.net</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">30</td>
+      <td><span class="company-name">BGM-Entreprise</span><span class="company-type">Startup BTP / Tech</span></td>
+      <td><span class="sector-tag s-saas">SaaS / PropTech</span></td>
+      <td class="mission">Gestion digitale de projets immobiliers et de chantiers (DQE automatisé), qualification des ouvriers, réduction des litiges BTP</td>
+      <td class="marche">Niche BTP numérique · Cible promoteurs immobiliers et BTP CI · Profil émergent</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>bgm-entreprise.ci</td>
+    </tr>
+
+    <!-- ══ MEDTECH ══ -->
+    <tr class="section-row"><td colspan="8">🏥 HealthTech & MedTech</td></tr>
+
+    <tr>
+      <td class="td-num">31</td>
+      <td><span class="company-name">Afrik'Apps</span><span class="company-type">Startup</span></td>
+      <td><span class="sector-tag s-sante">HealthTech / Social</span></td>
+      <td class="mission">Applications mobiles à utilité sociale, solutions de portabilité numérique, digitalisation des services sociaux et de santé communautaire</td>
+      <td class="marche">Niche social tech · Marché à impact · Profil émergent</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>afrikap.ps (app)</td>
+    </tr>
+
+    <!-- ══ MÉDIAS NUMÉRIQUES ══ -->
+    <tr class="section-row"><td colspan="8">📺 Médias Numériques & Contenu</td></tr>
+
+    <tr>
+      <td class="td-num">32</td>
+      <td><span class="company-name">Canal+ CI</span><span class="company-type">Groupe Vivendi/Canal+</span></td>
+      <td><span class="sector-tag s-media">Médias / Streaming</span></td>
+      <td class="mission">TV payante, streaming vidéo à la demande (myCANAL), contenus africains et internationaux, droits sportifs</td>
+      <td class="marche">Leader TV payante CI · Millions d'abonnés en Afrique subsaharienne · Dominant sur le streaming SVOD local</td>
+      <td><span class="company-type">Privé international</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m5"></span><span class="mat-text">Très mature</span></span></td>
+      <td>canalplus.com + myCANAL app</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">33</td>
+      <td><span class="company-name">Abidjan.net</span><span class="company-type">Portail historique CI</span></td>
+      <td><span class="sector-tag s-media">Médias / Portail</span></td>
+      <td class="mission">Premier portail d'information en Côte d'Ivoire : actualités, petites annonces, forums, emplois, référence numérique nationale</td>
+      <td class="marche">1er site d'information CI · Trafic organique massif · Références institutionnelles et publiques</td>
+      <td><span class="company-type">Privé ivoirien</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m5"></span><span class="mat-type">Très mature</span></span></td>
+      <td>abidjan.net</td>
+    </tr>
+
+    <!-- ══ ENTREPRISES PUBLIQUES ══ -->
+    <tr class="section-row"><td colspan="8">🏛️ Entreprises Publiques & Para-Publiques avec Applications Web</td></tr>
+
+    <tr>
+      <td class="td-num">34</td>
+      <td><span class="company-name">CI-ENERGIES</span><span class="company-type">Société d'État</span><span class="pub-tag">PUBLIC</span></td>
+      <td><span class="sector-tag s-public">Énergie / IT</span></td>
+      <td class="mission">Suivi et gestion des mouvements d'énergie électrique, maîtrise d'œuvre travaux électriques, contrôle équilibre financier du secteur, plateforme DATA de contrôle technique</td>
+      <td class="marche">Monopole régulation électrique CI · Supervision de toute l'infrastructure énergétique nationale</td>
+      <td><span class="company-type">État CI</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>cinergies.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">35</td>
+      <td><span class="company-name">CIE</span><span class="company-type">Compagnie Ivoirienne d'Électricité</span><span class="pub-tag">MIXTE</span></td>
+      <td><span class="sector-tag s-public">Énergie / Service public</span></td>
+      <td class="mission">Distribution et commercialisation de l'électricité en CI, gestion réseau basse/moyenne tension, portail clients (factures, contrats, réclamations en ligne)</td>
+      <td class="marche">~Monopole distribution électrique CI · Millions d'abonnés · Partenaire concessionnaire de l'État</td>
+      <td><span class="company-type">Privé concessionnaire (État)</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m5"></span><span class="mat-text">Très mature</span></span></td>
+      <td>cie.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">36</td>
+      <td><span class="company-name">SODECI</span><span class="company-type">Société de Distribution d'Eau CI</span><span class="pub-tag">MIXTE</span></td>
+      <td><span class="sector-tag s-public">Eau / Service public</span></td>
+      <td class="mission">Exploitation des infrastructures hydrauliques urbaines (eau potable & assainissement), portail clients en ligne, facturation digitale</td>
+      <td class="marche">~Monopole distribution eau CI · Contrat affermage avec État · Couverture nationale des zones urbaines</td>
+      <td><span class="company-type">Privé concessionnaire (État)</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m5"></span><span class="mat-text">Très mature</span></span></td>
+      <td>sodeci.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">37</td>
+      <td><span class="company-name">ANADER</span><span class="company-type">Agence Nationale d'Appui au Développement Rural</span><span class="pub-tag">PUBLIC</span></td>
+      <td><span class="sector-tag s-public">Agri / Conseil public</span></td>
+      <td class="mission">Conseil agricole et rural, professionnalisation des exploitants, numérique agricole, plateforme web d'information et de services ruraux</td>
+      <td class="marche">Monopole conseil agricole public CI · Présence nationale (zones rurales) · Bras numérique de l'État pour l'agriculture</td>
+      <td><span class="company-type">Société Anonyme État CI</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>anader.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">38</td>
+      <td><span class="company-name">SNDI</span><span class="company-type">Société Nationale de Développement Informatique</span><span class="pub-tag">PUBLIC</span></td>
+      <td><span class="sector-tag s-public">IT / E-Gouvernement</span></td>
+      <td class="mission">Conception et déploiement des systèmes d'information de l'État ivoirien, e-administration, portails gouvernementaux, numérisation services publics</td>
+      <td class="marche">100 % État CI · Fournisseur IT exclusif des administrations · Maître d'œuvre de la transformation numérique publique</td>
+      <td><span class="company-type">Société d'État</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>sndi.ci / portails gouv</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">39</td>
+      <td><span class="company-name">ARTCI</span><span class="company-type">Autorité de Régulation des Télécoms CI</span><span class="pub-tag">PUBLIC</span></td>
+      <td><span class="sector-tag s-public">Régulation / IT</span></td>
+      <td class="mission">Régulation du secteur télécoms & numérique, attribution fréquences, contrôle qualité opérateurs, publication statistiques sectorielles en ligne</td>
+      <td class="marche">Régulateur national unique du secteur télécoms · Supervise tous les opérateurs et fournisseurs numériques CI</td>
+      <td><span class="company-type">Institution publique</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>artci.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">40</td>
+      <td><span class="company-name">DGPE</span><span class="company-type">Direction Générale du Portefeuille de l'État</span><span class="pub-tag">PUBLIC</span></td>
+      <td><span class="sector-tag s-public">Finance / E-Gov</span></td>
+      <td class="mission">Suivi et contrôle des entreprises publiques du portefeuille de l'État CI, publication des données institutionnelles via portail web dédié</td>
+      <td class="marche">Portail e-gouvernement · Référence officielle sur les entreprises d'État CI</td>
+      <td><span class="company-type">Administration publique</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m3"></span><span class="mat-text">Scale-up</span></span></td>
+      <td>dgpe.gouv.ci</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">41</td>
+      <td><span class="company-name">SIR</span><span class="company-type">Société Ivoirienne de Raffinage</span><span class="pub-tag">MIXTE</span></td>
+      <td><span class="sector-tag s-public">Énergie / Industrie</span></td>
+      <td class="mission">Raffinage du pétrole brut, distribution d'hydrocarbures, système de gestion numérique des approvisionnements et livraisons</td>
+      <td class="marche">Seule raffinerie CI · Position stratégique dans l'approvisionnement régional en produits pétroliers</td>
+      <td><span class="company-type">Mixte (État + privé)</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>sir-ci.com</td>
+    </tr>
+
+    <!-- ══ TOURISME / VOYAGE ══ -->
+    <tr class="section-row"><td colspan="8">✈️ Tourisme, Voyage & Mobilité</td></tr>
+
+    <tr>
+      <td class="td-num">42</td>
+      <td><span class="company-name">Ivoir Trips International</span><span class="company-type">Startup — Meilleure Entreprise Innovante CI</span></td>
+      <td><span class="sector-tag s-logistique">TravelTech</span></td>
+      <td class="mission">Promotion du tourisme domestique ivoirien, plateforme de réservation de voyages et d'expériences locales, mise en valeur du patrimoine CI</td>
+      <td class="marche">Primée Meilleure Entreprise Innovante CI · Niche tourisme local · Représente CI à VivaTech 2025</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>ivoirtrips.com</td>
+    </tr>
+
+    <!-- ══ ANNUAIRE / MARKETPLACE B2B ══ -->
+    <tr class="section-row"><td colspan="8">📂 Annuaires B2B & Plateformes Professionnelles</td></tr>
+
+    <tr>
+      <td class="td-num">43</td>
+      <td><span class="company-name">Go Africa Online CI</span><span class="company-type">Plateforme panafricaine</span></td>
+      <td><span class="sector-tag s-ecom">Annuaire / B2B</span></td>
+      <td class="mission">Annuaire d'entreprises africaines, vitrine digitale pour PME, génération de leads B2B, visibilité web pour entreprises ivoiriennes</td>
+      <td class="marche">&gt;800 000 visiteurs/mois · Référence de l'annuaire professionnel CI · Actif dans 54 pays africains</td>
+      <td><span class="company-type">Privé régional</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m4"></span><span class="mat-text">Mature</span></span></td>
+      <td>goafricaonline.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">44</td>
+      <td><span class="company-name">Coriace Business</span><span class="company-type">Startup</span></td>
+      <td><span class="sector-tag s-ecom">Annuaire / B2B</span></td>
+      <td class="mission">Annuaire sectoriel des entreprises en Côte d'Ivoire, référencement des prestataires, mise en relation B2B locale</td>
+      <td class="marche">Niche annuaire local · Référencement sectoriel · Profil émergent</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m1"></span><span class="mat-text">Early stage</span></span></td>
+      <td>coriacebusiness.com</td>
+    </tr>
+
+    <!-- ══ LOGISTIQUE / SUPPLY CHAIN ══ -->
+    <tr class="section-row"><td colspan="8">🚚 Logistique, Supply Chain & Commerce B2B</td></tr>
+
+    <tr>
+      <td class="td-num">45</td>
+      <td><span class="company-name">Wasoko CI (ex-Sokowatch)</span><span class="company-type">Groupe panafricain</span></td>
+      <td><span class="sector-tag s-logistique">B2B Commerce / Logistique</span></td>
+      <td class="mission">Plateforme B2B pour détaillants informels : commandes digitales, livraison gratuite J+0, financement BNPL, logistique intégrée, entrepôts locaux</td>
+      <td class="marche">CA annualisé &gt;300 M€ · +500 % croissance annuelle · Expansion Abidjan et Dakar depuis 2022 · Cible commerce informel</td>
+      <td><span class="company-type">Privé international</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m3"></span><span class="mat-text">Scale-up</span></span></td>
+      <td>wasoko.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">46</td>
+      <td><span class="company-name">Afrisends</span><span class="company-type">Startup logistique</span></td>
+      <td><span class="sector-tag s-logistique">Logistique / Coursiers</span></td>
+      <td class="mission">Livraison express et gestion de colis à Abidjan, plateforme en ligne de commande et suivi de livraisons pour e-commercants et particuliers</td>
+      <td class="marche">Acteur local livraison Abidjan · Concurrent de Yango Delivery et Glovo sur le dernier kilomètre</td>
+      <td><span class="company-type">Startup ivoirienne</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>afrisends.com</td>
+    </tr>
+
+    <tr>
+      <td class="td-num">47</td>
+      <td><span class="company-name">Bizao CI</span><span class="company-type">Fondée ~2019</span></td>
+      <td><span class="sector-tag s-fintech">Fintech / API hub</span></td>
+      <td class="mission">Hub d'API pour paiements digitaux en Afrique francophone, agrégation mobile money, simplification des intégrations paiement pour marchands et développeurs</td>
+      <td class="marche">Actif en CI et dans plusieurs pays UEMOA · Niche B2B infrastructure paiement · Concurrent de HUB2</td>
+      <td><span class="company-type">Startup régionale (CI)</span></td>
+      <td><span class="maturite"><span class="maturite-dot dot-m2"></span><span class="mat-text">Startup en croissance</span></span></td>
+      <td>bizao.com</td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<footer>
+  <div>Sources : <strong>TechInAfrica · Partech Africa · StartupBlink · DigitalMag CI · ARTCI · DGPE · Tracxn</strong> — Données consolidées au 1er trimestre 2026</div>
+  <div>Généré le 12 mars 2026</div>
+</footer>
+
+</body>
+</html>
